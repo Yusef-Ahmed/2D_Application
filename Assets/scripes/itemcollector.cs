@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using System;
 public class itemcollector : MonoBehaviour
 {
-    private int counter = 0;
-
+    public static int counter = 7;
     [SerializeField] private Text CherriesCnt;
     [SerializeField] private AudioSource collectsound;
 
@@ -16,8 +15,8 @@ public class itemcollector : MonoBehaviour
         {
             collectsound.Play();
             Destroy(collision.gameObject);
-            counter++;
-            CherriesCnt.text = "Cherries:" + counter;
+            counter=Math.Max(counter-1,0);
+            CherriesCnt.text = "Required:" + counter;
         }
     }
 }
