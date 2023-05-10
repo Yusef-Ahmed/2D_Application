@@ -32,6 +32,7 @@ public class PlayerLife : MonoBehaviour
     private void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        itemcollector.counter = 7; // rest the counter after restarting the level
     }
 }
 

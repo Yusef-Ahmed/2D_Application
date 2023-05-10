@@ -11,12 +11,12 @@ public class Finish : MonoBehaviour
     void Start()
     {
         finishsound = GetComponent<AudioSource>();
-
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Player" && itemcollector.counter==0 && !LevelCompleted)
+        if (collision.gameObject.name == "Player" && itemcollector.counter==0 && !LevelCompleted) 
         {
+            // should be collected required cheeries
             LevelCompleted = true;
             finishsound.Play();
             Invoke("CompleteLevel",2f);
@@ -25,7 +25,7 @@ public class Finish : MonoBehaviour
     }
     private void CompleteLevel()
     {
-        itemcollector.counter = 8;
+        itemcollector.counter = 7; // rest the counter every level
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

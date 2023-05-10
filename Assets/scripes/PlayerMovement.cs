@@ -18,7 +18,6 @@ public class PlayerMovement : MonoBehaviour
     private enum MovementState {idel,running,jumping,falling};
     [SerializeField] private AudioSource jumpsound;
 
-    // Start is called before the first frame update
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -30,9 +29,9 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         x = Input.GetAxisRaw("Horizontal");
-        rb.velocity = new Vector2(x * MovementSpeed, rb.velocity.y);
+        rb.velocity = new Vector2(x * MovementSpeed, rb.velocity.y); // moving right and left
 
-        if (Input.GetButtonDown("Jump") && IsGrounded())
+        if (Input.GetButtonDown("Jump") && IsGrounded()) // should be on the floor
         {
             jumpsound.Play();
             rb.velocity = new Vector2(rb.velocity.x, JumpingPower);
@@ -51,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
         else if (x < 0f)
         {
             state = MovementState.running;
-            sr.flipX=true;
+            sr.flipX=true; // rotate his fase
         }
         else
         {
